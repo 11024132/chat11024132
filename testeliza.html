@@ -77,18 +77,18 @@ var qaList = [
     }
 	
 	// when we get a message from the app, display it on the page
-     ThunkableWebviewerExtension.receiveMessage(function(message) {
-    // Do something with your message
-	say(message);
-	
-	
-	 });
-	
+ThunkableWebviewerExtension.receiveMessage(function(message) {
+  // Do something with your message
+  say(message);
+  
+});
+
 	
 	
     
     function say(message) { // 當送出鍵按下時，會呼叫這個函數進行回答動作
-      append(document.getElementById("say").value) = message; // 先將使用者輸入的問句放到「對話區」顯示。
+      document.getElementById("say").value= message
+	  append(document.getElementById("say").value); // 先將使用者輸入的問句放到「對話區」顯示。
       answer(); // 然後回答使用者的問題。
     }
 	
@@ -110,10 +110,10 @@ var qaList = [
     function answer() { // 回答問題
 	
 	var r = getAnswer();
-	ThunkableWebviewerExtension.postMessage(r);
+	ThunkableWebviewerExtension.postMessage('hello world');
 	
       setTimeout(function () { // 停頓 1 到 3 秒再回答問題 (因為若回答太快就不像人了，人打字需要時間)
-        append(">> "+getAnswer());
+        append(">> "+r);
       }, 1000+random(2000));
     }
     
